@@ -9,7 +9,7 @@
 
         <!-- STYLES -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/style.css">
 
         <!-- SCRIPTS -->
@@ -32,7 +32,7 @@
 
         <div id="page-navbar" class="navbar navbar-default navbar-fixed-top">
             <div class="container">
-
+                <!--?php header('Access-Control-Allow-Origin: *'); ?-->
                 <?php $breadcrumbs = $lister->listBreadcrumbs(); ?>
 
                 <p class="navbar-text">
@@ -83,7 +83,18 @@
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
-
+            <a href="javascript:void(0)" class="file-rew-button">
+                <i class="fa fa-backward fa-2x"></i>
+            </a>
+            <a href="javascript:void(0)" class="file-play-button">
+                <i class="fa fa-play-circle fa-2x"></i>
+            </a>
+            <a href="javascript:void(0)" class="file-stop-button">
+                <i class="fa fa-stop-circle fa-2x"></i>
+            </a>
+            <a href="javascript:void(0)" class="file-ff-button">
+                <i class="fa fa-forward fa-2x"></i>
+            </a>
             <div id="directory-list-header">
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-10">File</div>
@@ -117,11 +128,11 @@
                         </a>
 
                         <?php if (is_file($fileInfo['file_path'])): ?>
-
-                            <a href="javascript:void(0)" class="file-info-button">
-                                <i class="fa fa-info-circle"></i>
-                            </a>
-
+                            <?php if ($fileInfo['icon_class'] == 'fa-youtube-play'): ?>
+                                <a href="javascript:void(0)" class="file-add-button">
+                                    <i class="fa fa-plus-circle"></i>
+                                </a>
+                            <?php endif; ?>
                         <?php else: ?>
 
                             <?php if ($lister->containsIndex($fileInfo['file_path'])): ?>

@@ -17,6 +17,72 @@ $(document).ready(function() {
         return false;
     });
 
+    $('.file-play-button').click(function(event) {
+        var url = 'http://192.168.1.4:8080/api/v1/play';
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                console.log(xmlHttp.responseText);
+            }
+        }
+        xmlHttp.open("GET", url, true); // true for asynchronous
+        xmlHttp.send(null);
+    });
+
+    $('.file-stop-button').click(function(event) {
+        var url = 'http://192.168.1.4:8080/api/v1/stop';
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                console.log(xmlHttp.responseText);
+            }
+        }
+        xmlHttp.open("GET", url, true); // true for asynchronous
+        xmlHttp.send(null);
+    });
+
+    $('.file-ff-button').click(function(event) {
+        var url = 'http://192.168.1.4:8080/api/v1/forward';
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                console.log(xmlHttp.responseText);
+            }
+        }
+        xmlHttp.open("GET", url, true); // true for asynchronous
+        xmlHttp.send(null);
+    });
+
+    $('.file-rew-button').click(function(event) {
+        var url = 'http://192.168.1.4:8080/api/v1/rewind';
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                console.log(xmlHttp.responseText);
+            }
+        }
+        xmlHttp.open("GET", url, true); // true for asynchronous
+        xmlHttp.send(null);
+    });
+
+    // Add button on click action
+    $('.file-add-button').click(function(event) {
+        var name = $(this).closest('li').attr('data-name');
+        var path = $(this).closest('li').attr('data-href');
+
+        var url = 'http://192.168.1.4:8080/api/v1/add';
+        var params = "path=/" + path;
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                console.log(xmlHttp.responseText + "\n" + path);
+            }
+        }
+        xmlHttp.open("POST", url, true); // true for asynchronous
+        xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlHttp.send(params);
+    });
+
     // Hash button on click action
     $('.file-info-button').click(function(event) {
 

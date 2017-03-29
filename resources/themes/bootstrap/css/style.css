@@ -58,6 +58,13 @@ body.breadcrumb-fixed {
     color: #555;
 }
 
+.file-ff-button,
+.file-rew-button,
+.file-stop-button,
+.file-play-button {
+
+}
+.file-add-button,
 .file-info-button,
 .web-link-button {
     display: inline-block;
